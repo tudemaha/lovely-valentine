@@ -42,5 +42,15 @@ func main() {
 		t.Execute(w, data)
 	})
 
+	http.HandleFunc("/input", func(w http.ResponseWriter, r *http.Request) {
+		t, err := template.ParseFiles("./view/password.html")
+		if err != nil {
+			fmt.Println("error: ", err)
+			return
+		}
+
+		t.Execute(w, nil)
+	})
+
 	http.ListenAndServe(":3000", nil)
 }
