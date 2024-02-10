@@ -4,9 +4,13 @@ import (
 	"fmt"
 	"net/http"
 	"text/template"
+	"valentine-quote/controller"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {
+
 	fs := http.FileServer(http.Dir("./public"))
 	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
@@ -28,21 +32,7 @@ func main() {
 		t.Execute(w, data)
 	})
 
-	http.HandleFunc("/create", func(w http.ResponseWriter, r *http.Request) {
-		t, err := template.ParseFiles("./view/create.html")
-		if err != nil {
-			fmt.Println("error: ", err)
-			return
-		}
-
-		data := struct {
-			QuotesNum []uint8
-		}{
-			QuotesNum: []uint8{1, 2, 3, 4, 5},
-		}
-
-		t.Execute(w, data)
-	})
+	http.Handle("/create", controller.CreateMessageHandler())
 
 	http.HandleFunc("/finish", func(w http.ResponseWriter, r *http.Request) {
 		t, err := template.ParseFiles("./view/finish.html")

@@ -27,12 +27,15 @@
 								width="50%"
 							/>
 							<h4 class="card-title">Yeyyy pesan berhasil dibuat!</h4>
-							<p>
-								Passwordnya: <span class="fw-bold text-danger">faojsdf</span>
+							<p class="mb-3">
+								Passwordnya:
+								<span class="fw-bold text-danger">{{ .Password }}</span>
 							</p>
 							<p>
 								Link buat doi:
-								<a href="#" class="fw-bold text-danger">faojsdf</a>
+								<a href="{{ .Link }}" class="fw-bold text-danger"
+									>{{ .Link }}</a
+								>
 							</p>
 							{{ else }}
 							<img
