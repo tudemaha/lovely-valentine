@@ -22,3 +22,5 @@ func CreateMessage(message NewMessage) (string, bool) {
 	insertedId := result.InsertedID.(primitive.ObjectID).Hex()
 	return insertedId, true
 }
+
+// func GetMessage(id string) (Me)

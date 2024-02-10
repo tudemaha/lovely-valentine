@@ -10,6 +10,7 @@
 			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 			crossorigin="anonymous"
 		/>
+		<link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
 		<link rel="stylesheet" href="/public/css/style.css" />
 		<link rel="stylesheet" href="/public/css/body.css" />
 	</head>
@@ -27,16 +28,17 @@
 								width="50%"
 							/>
 							<h4 class="card-title">Yeyyy pesan berhasil dibuat!</h4>
-							<p class="mb-3">
+							<p class="mb-2">
 								Passwordnya:
 								<span class="fw-bold text-danger">{{ .Password }}</span>
 							</p>
-							<p>
+							<p class="mb-3">
 								Link buat doi:
 								<a href="{{ .Link }}" class="fw-bold text-danger"
 									>{{ .Link }}</a
 								>
 							</p>
+							<p class="form-text">Jangan lupa copy dulu keduanya!</p>
 							{{ else }}
 							<img
 								class="img-fluid mb-2"
