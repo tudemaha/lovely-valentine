@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bootstrap demo</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="/public/css/style.css" />
+	</head>
+	<body>
+		<div id="carousel" class="carousel slide">
+			<div class="carousel-indicators">
+				{{ range $index, $elem := .Quotes }}
+				<button
+					type="button"
+					data-bs-target="#carousel"
+					data-bs-slide-to="{{ $index }}"
+					{{
+					if
+					eq
+					$index
+					0
+					}}
+					class="active"
+					aria-current="true"
+					{{
+					end
+					}}
+					aria-label="Slide {{ $index }}"
+				></button>
+				{{ end }}
+			</div>
+			<div class="carousel-inner">
+				{{ range $index, $elem := .Quotes }}
+				<div
+					class="carousel-item {{ if eq $index 0 }} active {{ end }}"
+					id="item{{ $index }}"
+				>
+					<div
+						class="row item vh-100 justify-content-center align-items-center backdrop"
+					>
+						<div class="col text-center">
+							<img src="/public/img/item{{ $index }}.gif" width=120rem"
+							alt="Cute Gif" class="mb-2"/>
+							<h1 class="text-white">{{ $elem }}{{ $index }}</h1>
+						</div>
+					</div>
+				</div>
+				{{ end }}
+			</div>
+			<button
+				class="carousel-control-prev"
+				type="button"
+				data-bs-target="#carousel"
+				data-bs-slide="prev"
+			>
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button
+				class="carousel-control-next"
+				type="button"
+				data-bs-target="#carousel"
+				data-bs-slide="next"
+			>
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
