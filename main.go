@@ -10,10 +10,10 @@ func main() {
 	fs := http.FileServer(http.Dir("./public"))
 	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/create", func(w http.ResponseWriter, r *http.Request) {
 		t, err := template.ParseFiles("./view/create.html")
 		if err != nil {
-			fmt.Println("error", err)
+			fmt.Println("error: ", err)
 			return
 		}
 
@@ -21,6 +21,22 @@ func main() {
 			QuotesNum []uint8
 		}{
 			QuotesNum: []uint8{1, 2, 3, 4, 5},
+		}
+
+		t.Execute(w, data)
+	})
+
+	http.HandleFunc("/finish", func(w http.ResponseWriter, r *http.Request) {
+		t, err := template.ParseFiles("./view/finish.html")
+		if err != nil {
+			fmt.Println("error: ", err)
+			return
+		}
+
+		data := struct {
+			Status bool
+		}{
+			Status: false,
 		}
 
 		t.Execute(w, data)

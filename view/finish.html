@@ -15,75 +15,36 @@
 	<body>
 		<div class="container">
 			<div class="row justify-content-center vh-100 align-items-center">
-				<div class="col-md-7">
-					<div class="card">
-						<div class="row h-75 g-0">
-							<div class="col-md-5 p-0 d-none d-md-block">
-								<img
-									src="/public/img/form-img.jpg"
-									class="img-fluid rounded=start fit-image-height"
-									alt="form-img"
-								/>
-							</div>
-							<div class="col-md-7">
-								<div class="card-body">
-									<img
-										class="img-fluid"
-										width="20%"
-										src="/public/img/jumping-dino.gif"
-										alt="Jumping Dino"
-									/>
-									<h4 class="card-title">Tunjukin kalo kamu romantis...</h4>
-									<form action="" method="POST">
-										<div class="mb-3">
-											<label for="magic" class="form-label"
-												>Magic Sentence
-												<span class="text-danger">*</span></label
-											>
-											<input
-												type="text"
-												class="form-control"
-												name="magic"
-												id="magic"
-												required
-											/>
-											<div class="form-text">
-												Magic sentence adalah kalimat spesial dari doi. Bakal
-												jadi password buat buka pesan dari kamu.
-											</div>
-										</div>
-										{{ range .QuotesNum }}
-										<div class="mb-3">
-											<label for="quote{{ . }}" class="form-label"
-												>Quote Romantis {{ . }}
-												<span class="text-danger">
-													{{ if le . 3 }} * {{ end }}
-												</span></label
-											>
-											<input
-												type="text"
-												class="form-control"
-												name="quote{{ . }}"
-												id="quote{{ . }}"
-												{{
-												if
-												le
-												.
-												3
-												}}
-												required
-												{{
-												end
-												}}
-											/>
-										</div>
-										{{ end }}
-										<button type="submit" class="btn btn-danger">
-											Bikin Pesan
-										</button>
-									</form>
-								</div>
-							</div>
+				<div class="col-md-4">
+					<div class="card text-center">
+						<div class="card-body">
+							{{ if eq .Status true}}
+							<img
+								class="img-fluid"
+								src="/public/img/success.gif"
+								alt="Jumping Dino"
+								width="50%"
+							/>
+							<h4 class="card-title">Yeyyy pesan berhasil dibuat!</h4>
+							<p>
+								Passwordnya: <span class="fw-bold text-danger">faojsdf</span>
+							</p>
+							<p>
+								Link buat doi:
+								<a href="#" class="fw-bold text-danger">faojsdf</a>
+							</p>
+							{{ else }}
+							<img
+								class="img-fluid mb-2"
+								src="/public/img/failed.gif"
+								alt="Crying Dino"
+								width="90%"
+							/>
+							<h5 class="card-title mb-3">
+								Yahh pesan belum berhasil dibuat :(
+							</h5>
+							<a class="btn btn-danger" href="/create">Buat Ulang</a>
+							{{ end }}
 						</div>
 					</div>
 				</div>
