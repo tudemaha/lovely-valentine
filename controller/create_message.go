@@ -61,18 +61,13 @@ func postCreate(w *http.ResponseWriter, r *http.Request) {
 		status = false
 	}
 
-	urlScheme := "http://"
-	if r.TLS != nil {
-		urlScheme = "https://"
-	}
-
 	data := struct {
 		Status   bool
 		Link     string
 		Password string
 	}{
 		Status:   status,
-		Link:     urlScheme + r.Host + "/" + insertedID,
+		Link:     "https://" + r.Host + "/" + insertedID,
 		Password: messages.HashedMagic,
 	}
 

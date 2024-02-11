@@ -40,3 +40,7 @@ p {
 .backdrop {
 	backdrop-filter: brightness(50%) blur(10px);
 }
+
+.text-small {
+	font-size: x-small;
+}
