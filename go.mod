@@ -1,4 +1,4 @@
-module valentine-quote
+module github.com/tudemaha/lovely-valentine
 
 go 1.19
 

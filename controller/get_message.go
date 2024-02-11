@@ -5,7 +5,8 @@ import (
 	"net/http"
 	"strings"
 	"text/template"
-	"valentine-quote/model"
+
+	"github.com/tudemaha/lovely-valentine/model"
 )
 
 func GetMessageHandler() http.HandlerFunc {

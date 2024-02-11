@@ -2,7 +2,8 @@ package main
 
 import (
 	"net/http"
-	"valentine-quote/controller"
+
+	"github.com/tudemaha/lovely-valentine/controller"
 
 	_ "github.com/joho/godotenv/autoload"
 )
