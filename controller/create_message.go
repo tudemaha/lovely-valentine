@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"text/template"
 	"valentine-quote/model"
 	"valentine-quote/utils"
@@ -54,14 +53,20 @@ func postCreate(w *http.ResponseWriter, r *http.Request) {
 	}
 	messages.HashedMagic = utils.CreateMD5Hash(messages.Magic)
 
+	status := true
 	insertedID, err := model.CreateMessage(messages)
+	if err != nil {
+		log.Printf("ERROR CreateMessage fatal error: %v", err)
+		status = false
+	}
+
 	data := struct {
 		Status   bool
 		Link     string
 		Password string
 	}{
-		Status:   err,
-		Link:     os.Getenv("WEB_URL") + insertedID,
+		Status:   status,
+		Link:     r.Host + "/" + insertedID,
 		Password: messages.HashedMagic,
 	}
 

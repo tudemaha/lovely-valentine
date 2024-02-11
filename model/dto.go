@@ -16,7 +16,9 @@ type NewMessage struct {
 	Quotes      []string `bson:"quotes"`
 }
 
-type GetMessage struct {
-	ID primitive.ObjectID `bson:"_id"`
-	NewMessage
+type Message struct {
+	ID          primitive.ObjectID `bson:"_id"`
+	Magic       string             `bson:"magic"`
+	HashedMagic string             `bson:"hashed_magic"`
+	Quotes      []string           `bson:"quotes"`
 }
