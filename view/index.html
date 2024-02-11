@@ -14,10 +14,9 @@
 		<link rel="stylesheet" href="/public/css/style.css" />
 	</head>
 	<body>
-		<p>{{ .Message.Magic }}</p>
 		<div id="carousel" class="carousel slide">
 			<div class="carousel-indicators">
-				{{ range $index, $elem := .Message.Quotes }}
+				{{ range $index, $elem := .Quotes }}
 				<button
 					type="button"
 					data-bs-target="#carousel"
@@ -38,7 +37,7 @@
 				{{ end }}
 			</div>
 			<div class="carousel-inner">
-				{{ range $index, $elem := .Message.Quotes }}
+				{{ range $index, $elem := .Quotes }}
 				<div
 					class="carousel-item {{ if eq $index 0 }} active {{ end }}"
 					id="item{{ $index }}"

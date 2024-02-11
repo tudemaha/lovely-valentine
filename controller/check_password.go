@@ -31,6 +31,7 @@ func CheckPasswordHandler() http.HandlerFunc {
 		message, available := model.CheckAvailableID(id)
 		if !available {
 			http.Redirect(w, r, "/create", http.StatusSeeOther)
+			return
 		}
 
 		data := struct {
@@ -43,10 +44,10 @@ func CheckPasswordHandler() http.HandlerFunc {
 
 		t, err := template.ParseFiles("./view/password.html")
 		if err != nil {
-			log.Println("ERROR getCreate error: ", data)
+			log.Println("ERROR getCreate error: ", err)
 			return
 		}
 
-		t.Execute(w, message)
+		t.Execute(w, data)
 	}
 }

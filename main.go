@@ -14,7 +14,7 @@ func main() {
 	http.Handle("/favicon.ico", controller.FaviconHandler())
 	http.Handle("/password/", controller.CheckPasswordHandler())
 	http.Handle("/create/", controller.CreateMessageHandler())
-	// http.Handle("/", controller.GetMessageHandler())
+	http.Handle("/", controller.GetMessageHandler())
 
 	http.ListenAndServe(":3000", nil)
 }
