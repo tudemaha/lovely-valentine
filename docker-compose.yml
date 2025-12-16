@@ -1,0 +1,6 @@
+services:
+  lovely-valentine:
+    image: ghcr.io/tudemaha/lovely-valentine:latest
+    env_file: .env
+    ports:
+      - 127.0.0.1:3000:3000
