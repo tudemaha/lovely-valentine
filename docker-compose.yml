@@ -1,5 +1,6 @@
 services:
   lovely-valentine:
+    restart: always
     image: ghcr.io/tudemaha/lovely-valentine:latest
     env_file: .env
     ports:
